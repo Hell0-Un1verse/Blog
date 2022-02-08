@@ -1,17 +1,31 @@
-<h1><%= @article.title %></h1>
+<div class="card">
+<div class="card-header">
+  <h1><%= @article.title %></h1>
+</div>
+  <div class="card-body">
+    <p><%= @article.body %></p>
+  </div>
+</div>
 
-<p><%= @article.body %></p>
 
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article), data: {
+  <button type="button" class="btn btn-outline-primary"><%= link_to "Edit Article", edit_article_path(@article) %> </button></li>
+  <button type="button" class="btn btn-outline-primary"><%= link_to "Delete Article", article_path(@article), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+                  } %> </button>
 
-<h2>Comments</h2>
-<%= render @article.comments %><br>
+<div class="card">
+ <div class="card-header">
+    <h2>Comments</h2>
+ </div>
+ <div class="card-body">
+  <%= render @article.comments %><br>
+</div>
+</div>
 
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
+
+<button type="button" class="btn btn-outline-primary">
+<a href="/articles">Home Page </a> 
+</button>

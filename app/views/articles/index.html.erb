@@ -1,14 +1,30 @@
-<h1>Articles</h1>
+<header class="navbar sticky-top navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+  <a class="navbar-brand" href="#">Articles</a>
+   
+    <% @articles.each do |article| %>
+       <% unless article.archived? %>
+       <ul class="nav-item">
+         <%= link_to article.title, article %>
+       </ul>
+
+       <% end %>
+       <% end %> 
+    
+   </div>
+</nav>
+</header>
+
+
+
+
+
+<h1> Home Page</h1>
+<p>
 Our blog has <%= Article.public_count %> article(s) and counting!
 
-<ul>
-  <% @articles.each do |article| %>
-    <% unless article.archived? %>
-      <li>
-        <%= link_to article.title, article %>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
 
-<%= link_to "New Article", new_article_path %>
+<br><button type="button" class="btn btn-outline-primary"><%= link_to "New Article", new_article_path %></button>
+
+</p>
